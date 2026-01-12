@@ -42,13 +42,69 @@ If you want to see which layers are included in your current build environment
 bitbake-layers show-layers
 ```
 
+#### Adding a New Layer
+1. Clone the layer into your project directory (example: meta-openembedded):
+```bash 
+git clone -b scarthgap git://git.openembedded.org/meta-openembedded
+```
+
+2. Add the layer to your build configuration:
+```bash 
+bitbake-layers add-layer ../meta-openembedded/meta-oe
+bitbake-layers add-layer ../meta-openembedded/meta-python
+bitbake-layers add-layer ../meta-openembedded/meta-networking
+```
+3. Verify that the layer has been added:
+```bash 
+bitbake-layers show-layers
+``` 
+Note - Edit build/conf/local.conf to adjust build options such as image type, machine target.
+
+#### Installing Packages in Your Image
+You can install additional packages by editing local.conf or creating a custom image recipe.
+1. Using local.conf:<br>
+    Add packages to the IMAGE_INSTALL_append variable:
+    ```bash 
+    # Example: Add Python3 and AI libraries
+    IMAGE_INSTALL_append = " python3-opencv python3-numpy python3-pandas python3-matplotlib"
+    ```
+2. Using a custom image recipe:
+    Create a .bb file (e.g., my-image.bb) in a layer and include:
+    ```bash
+    SUMMARY = "Custom KnowledgeOS image with AI stack"
+    LICENSE = "MIT"
+
+    IMAGE_INSTALL = " \
+        packagegroup-core-boot \
+        packagegroup-core-ssh-openssh \
+        python3 \
+        python3-opencv \
+        python3-numpy \
+        python3-pandas \
+        python3-matplotlib \
+    "
+    ```
+    Then build your image:
+    ```bash 
+    bitbake my-image
+    ```
 
 ### 4.Building & Testing
 #### Build the Image
+Yocto provides multiple pre-configured images:
+| Image | Description |
+|-------|-------------|
+| `core-image-minimal` | Minimal CLI image, fastest build, no GUI |
+| `core-image-sato` | Lightweight GUI environment with X11 |
+| `core-image-full-cmdline` | Full command-line system with networking and package manager |
+| `core-image-x11` | X11 GUI environment for desktop-like experience |
+| `core-image-qt5` | GUI with Qt5 applications pre-installed |
 
 To build the base system with the AI stack included:
 
 ```bash 
+bitbake <image-name>
+# Example
 bitbake core-image-minimal
 ```
 
@@ -67,6 +123,9 @@ runqemu nographic
 
 Login: root (no password required)
 
-Verify Architecture: uname -a (should show aarch64)
+Verify Architecture: 
+```bash
+uname -a # should show aarch64 
+```
 
 Exit QEMU: Press Ctrl+A, then X or poweroff
