@@ -1,0 +1,36 @@
+# --- Yocto Build Output (The Heavy Stuff) ---
+build/tmp/
+build/sstate-cache/
+build/cache/
+build/workspace/
+build/pseudodone
+build/bitbake.lock
+
+# --- Downloads (Don't commit source tarballs) ---
+downloads/
+build/downloads/
+
+# --- Environment & Scripts ---
+# We keep the configuration but ignore the shell's setup scripts 
+# that are auto-generated.
+build/conf/templateconf.cfg
+
+# --- Version Control for Layers ---
+# If you are managing layers as git submodules, keep these.
+# If you just cloned them manually, you may want to ignore them 
+# to keep your main repo small.
+# poky/
+# meta-openembedded/
+
+# --- IDE & System Trash ---
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+
+# --- Logic: Ignore everything in build EXCEPT your config ---
+build/**
+!build/conf/
+!build/conf/local.conf
+!build/conf/bblayers.conf
