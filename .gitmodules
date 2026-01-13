@@ -5,3 +5,27 @@
 	path = meta-openembedded
 	url = git://git.openembedded.org/meta-openembedded
 	branch = scarthgap
+[submodule "meta-arm"]
+	path = meta-arm
+	url = https://git.yoctoproject.org/meta-arm.git
+	branch = scarthgap
+[submodule "meta-tensorflow"]
+	path = meta-tensorflow
+	url = git://git.yoctoproject.org/meta-tensorflow
+	branch = scarthgap
+[submodule "meta-java"]
+	path = meta-java
+	url = git://git.yoctoproject.org/meta-java
+	branch = scarthgap
+[submodule "meta-python-ai"]
+	path = meta-python-ai
+	url = https://github.com/zboszor/meta-python-ai.git
+	branch = scarthgap
+[submodule "meta-clang-revival"]
+	path = meta-clang-revival
+	url = https://github.com/zboszor/meta-clang-revival.git
+	branch = scarthgap
+[submodule "meta-clang"]
+	path = meta-clang
+	url = https://github.com/kraj/meta-clang.git
+	branch = scarthgap
