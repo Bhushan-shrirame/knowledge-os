@@ -25,8 +25,14 @@ g++-multilib python3-pyserial
 
 #### Clone the Project
 This project uses Git submodules to manage metadata layers. Use the --recursive flag to ensure all layers are downloaded automatically.
+#### Using HTTPS:
 ```bash
-git clone --recursive https://github.com/UElement/c.git
+git clone --recursive https://github.com/UElement/Knowledge-OS.git
+cd knowledge_os
+```
+#### Using SSH:
+```bash
+git clone --recursive git@github.com:UElement/Knowledge-OS.git
 cd knowledge_os
 ```
 
@@ -37,6 +43,11 @@ source poky/oe-init-build-env build
 ```
 
 ### 3. Configuration & Layer Setup
+#### Fix Configuration Paths 
+If you have cloned this repository and your bblayers.conf contains hardcoded paths from a different system, run the following command to automatically update them to your current directory:
+``` bash
+sed -i "s|/mnt/knowledge/Knowledge-OS|${PWD}|g" conf/bblayers.conf
+```
 If you want to see which layers are included in your current build environment
 ```bash 
 bitbake-layers show-layers
