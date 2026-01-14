@@ -140,3 +140,51 @@ uname -a # should show aarch64
 ```
 
 Exit QEMU: Press Ctrl+A, then X or poweroff
+
+
+## 📦 Installed Packages and System Features
+
+The operating system includes a curated set of packages to provide a balance between high-performance AI capabilities and production-grade reliability.
+
+### 🧠 AI & Computer Vision Stack
+| Package | Description |
+| :--- | :--- |
+| **tensorflow-lite** | Core engine for running optimized AI models (inference) on hardware. |
+| **python3-opencv** | The industry standard for image processing and real-time video capture. |
+| **python3-numpy** | High-performance mathematical library for array and matrix operations. |
+| **libv4l / v4l-utils** | Drivers and testing tools for USB/CSI cameras (Video4Linux). |
+
+### 🌐 Web & API Services
+| Package | Description |
+| :--- | :--- |
+| **python3-flask** | Micro-framework for building web dashboards and AI model interfaces. |
+| **python3-djangorestframework** | Advanced toolkit for building robust, scalable Web APIs. |
+| **python3-gunicorn** | Production HTTP server used to run Flask/Django apps reliably. |
+| **python3-requests** | Standard library for making HTTP requests to external services. |
+
+### 🛡️ Production & Security
+| Package | Description |
+| :--- | :--- |
+| **sudo** | Essential for managing secure administrative access. |
+| **iptables** | Built-in firewall to protect the device from unauthorized network access. |
+| **haveged** | Entropy daemon to ensure fast SSH logins and secure SSL/TLS encryption. |
+| **ca-certificates** | Required for the system to verify and trust secure HTTPS websites. |
+| **watchdog** | Hardware monitor that reboots the device automatically if it hangs. |
+
+### 📊 System Management & Logging
+| Package | Description |
+| :--- | :--- |
+| **rsyslog** | High-performance system for collecting and managing system logs. |
+| **logrotate** | Prevents disk failure by automatically compressing and purging old logs. |
+| **htop** | Real-time interactive process viewer and system resource monitor. |
+| **networkmanager** | Complete stack for managing Ethernet, Wi-Fi, and mobile data. |
+| **opkg** | Lightweight package manager for on-device software updates. |
+
+### 🛠️ Base System Utilities
+- **Shell & Core:** `bash`, `coreutils`, `util-linux`, `procps`, `shadow`.
+- **Text Processing:** `vim`, `sed`, `grep`, `gawk`, `findutils`, `diffutils`.
+- **Networking:** `openssh`, `curl`, `net-tools`, `iproute2`, `iputils`, `iw`, `wpa-supplicant`.
+- **Compression:** `tar`, `gzip`, `bzip2`, `xz`, `lz4`, `zstd`.
+- **Python Environment:** `python3-modules`, `python3-pip`, `python3-setuptools`.
+
+---
