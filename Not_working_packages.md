@@ -7,4 +7,5 @@ iana-etc \
 python3-subprocess \
 python3-scipy \
 python3-pillow \
+tflite-runtime \
 
