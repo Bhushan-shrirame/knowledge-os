@@ -188,3 +188,54 @@ The operating system includes a curated set of packages to provide a balance bet
 - **Python Environment:** `python3-modules`, `python3-pip`, `python3-setuptools`.
 
 ---
+
+
+## 🧠 KnowledgeOS: Embedded AI (llama.cpp)
+
+This guide explains how to deploy and run the **Qwen-0.5B** model using `llama.cpp` on a `qemuarm64` target.
+
+---
+
+### 🚀 1. Launching KnowledgeOS (Host Side)
+
+
+Because AI models are memory-intensive, you must launch the QEMU emulator with at least **4GB of RAM** and multiple CPU cores to prevent system freezes.
+
+Run the following command from your Yocto build directory:
+
+```bash
+runqemu qemuarm64 nographic qemuparams="-m 4G -smp 4"
+```
+
+### 📥 2. Downloading the Model
+KnowledgeOS uses GGUF-formatted models. For the best balance of speed and intelligence, we use the Qwen2.5-0.5B-Instruct (Quantized to 4-bit).
+```bash
+curl -L [https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf](https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf) -o /root/qwen.gguf
+```
+
+### 🤖 3. Running the AI
+#### A. Simple Inference (CLI Mode)
+To ask a single question, use the llama-cli. In an emulated environment, it is highly recommended to use 1 thread (-t 1) to ensure the system remains responsive.
+
+```bash
+llama-cli -m /root/qwen.gguf \
+          -p "Greetings from KnowledgeOS! Tell me one cool fact about Linux." \
+          -n 128 -t 1 --mmap
+```
+
+#### B. Interactive Chat Mode
+To enter an ongoing conversation with the AI:
+```bash
+llama-cli -m /root/qwen.gguf -cnv -t 1 --mmap
+```
+
+#### 🛠 4. Troubleshooting
+##### The terminal freezes during inference:
+
+This is "CPU Starvation." Kill the process from your Host PC using killall -9 qemu-system-aarch64.
+
+Restart QEMU and ensure you use -t 1 to leave CPU overhead for the OS.
+
+##### "Insufficient memory" error:
+
+Check your local.conf on the host. Ensure QB_MEM = "-m 4096" is set and that no mem=4M boot arguments are overriding your RAM.
