@@ -21,9 +21,9 @@ chrpath socat cpio python3 python3-pip python3-pexpect xterm libsdl1.2-dev libya
 g++-multilib python3-pyserial
 ```
 
-### 2. Installation & Initialization
+## 2. Installation & Initialization
 
-#### Clone the Project
+### Clone the Project
 This project uses Git submodules to manage metadata layers. Use the --recursive flag to ensure all layers are downloaded automatically.
 #### Using HTTPS:
 ```bash
@@ -36,14 +36,14 @@ git clone --recursive git@github.com:UElement/Knowledge-OS.git
 cd knowledge_os
 ```
 
-#### Initialize Build Environment
+### Initialize Build Environment
 This command sets up the environment and creates the build directory:
 ```bash
 source poky/oe-init-build-env build
 ```
 
-### 3. Configuration & Layer Setup
-#### Fix Configuration Paths 
+## 3. Configuration & Layer Setup
+### Fix Configuration Paths 
 If you have cloned this repository and your bblayers.conf contains hardcoded paths from a different system, run the following command to automatically update them to your current directory:
 ``` bash
 sed -i "s|/mnt/knowledge/Knowledge-OS|${PWD}|g" conf/bblayers.conf
@@ -53,7 +53,7 @@ If you want to see which layers are included in your current build environment
 bitbake-layers show-layers
 ```
 
-#### Adding a New Layer
+### Adding a New Layer
 1. Clone the layer into your project directory (example: meta-openembedded):
 ```bash 
 git clone -b scarthgap git://git.openembedded.org/meta-openembedded
@@ -71,7 +71,7 @@ bitbake-layers show-layers
 ``` 
 Note - Edit build/conf/local.conf to adjust build options such as image type, machine target.
 
-#### Installing Packages in Your Image
+### Installing Packages in Your Image
 You can install additional packages by editing local.conf or creating a custom image recipe.
 1. Using local.conf:<br>
     Add packages to the IMAGE_INSTALL_append variable:
@@ -100,8 +100,54 @@ You can install additional packages by editing local.conf or creating a custom i
     bitbake my-image
     ```
 
-### 4.Building & Testing
-#### Build the Image
+### Creating a New Layer
+Use the create-layer subcommand. By convention, layer names start with meta-.
+
+It is best practice to keep your custom layers outside the poky directory (e.g., in a layers/ or sources/ directory) so they aren't accidentally deleted if you update the core metadata.
+```bash
+# Example: Creating 'meta-custom' one level above your build directory
+bitbake-layers create-layer ../meta-custom
+```
+
+What gets created?
+
+The tool generates a standard skeleton:
+
+   * conf/layer.conf: The configuration file that tells BitBake how to handle your layer.
+
+   * recipes-example/: A boilerplate recipe to help you get started.
+
+   * COPYING.MIT & README: Standard documentation files.
+
+#### Add the Layer to Your Build
+Creating the directory doesn't mean BitBake knows it exists. You must add it to your conf/bblayers.conf file. The tool can do this automatically:
+```bash
+bitbake-layers add-layer ../meta-custom
+```
+Verify the addition: Run the following command to see if your layer appears in the active list:
+```bash
+bitbake-layers show-layers
+```
+#### Key Configurations in layer.conf
+If you open ../meta-custom/conf/layer.conf, you will see several variables. One of the most important to understand is priority:
+
+   * BBFILE_PRIORITY_meta-custom = "6": This number determines which recipe BitBake chooses if two layers provide the same recipe name. Higher numbers have higher priority.
+#### Test Your New Layer
+The create-layer command includes a dummy recipe called example. You can verify everything is wired up correctly by attempting to "bake" it:
+```bash
+bitbake example
+```
+If the build completes without error, your layer is fully functional and ready for your custom recipes.
+
+Best Practices
+   * Naming: Always prefix with meta-.
+
+   * Logical Separation: Create separate layers for different purposes (e.g., meta-bsp for hardware support, meta-apps for custom software).
+
+   * Version Control: Initialize a Git repository inside your new layer immediately to track your changes.
+
+## 4.Building & Testing
+### Build the Image
 Yocto provides multiple pre-configured images:
 | Image | Description |
 |-------|-------------|
@@ -119,7 +165,7 @@ bitbake <image-name>
 bitbake core-image-minimal
 ```
 
-#### Run in QEMU (Emulator)
+### Run in QEMU (Emulator)
 
 Once the build completes, launch the OS using the built-in emulator:
 

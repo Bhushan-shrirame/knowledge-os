@@ -1,0 +1,166 @@
+IMAGE_INSTALL:append = " \
+  glibc \
+  tzdata \
+  bash \
+  coreutils \
+  util-linux \
+  procps \
+  shadow \
+  libcap \
+  libxcrypt \
+  attr \
+  acl \
+  zlib \
+  bzip2 \
+  xz \
+  lz4 \
+  zstd \
+  gzip \
+  tar \
+  sed \
+  grep \
+  gawk \
+  findutils \
+  diffutils \
+  less \
+  psmisc \
+  iproute2 \
+  inetutils \
+  e2fsprogs \
+  udev \
+  vim \
+  man-db \
+  man-pages \
+  groff \
+  git \
+  htop \
+  curl \
+  openssh \
+  net-tools \
+  opkg \
+  v4l-utils \
+  iputils \
+  libv4l \
+  ca-certificates \
+  networkmanager \
+  sudo \
+  iptables \
+  haveged \
+  logrotate \
+  rsyslog \
+  watchdog \
+  iw \
+  wpa-supplicant \
+  jpeg \
+  libpng \
+  python3 \
+  python3-numpy \
+  python3-opencv \
+  python3-djangorestframework \
+  python3-flask \
+  python3-modules \
+  python3-pip \
+  python3-requests \
+  python3-gunicorn \
+  python3-setuptools \
+  python3-unixadmin \
+  python3-pandas \
+  tensorflow-lite \
+  python3-pybind11 \
+  make \
+  libstdc++ \
+  libstdc++-dev \
+  alsa-utils \
+  pulseaudio \
+  cmake \
+  llama-cpp \
+  usbutils \
+"
+
+FILE_UTILITIES = " \
+    zlib \
+    bzip2 \
+    xz \
+    lz4 \
+    zstd \
+    gzip \
+    tar \
+    sed \
+    grep \
+    gawk \
+    findutils \
+    diffutils \
+    less \
+    psmisc \
+"
+
+NETWORKING_TOOLS = " \
+    iproute2 \
+    inetutils \
+    curl \
+    openssh \
+    net-tools \
+    iputils \
+    ca-certificates \
+    networkmanager \
+    iptables \
+    iw \
+    wpa-supplicant \
+"
+
+HARDWARE_SUPPORT = " \
+    udev \
+    e2fsprogs \
+    usbutils \
+    v4l-utils \
+    libv4l \
+    jpeg \
+    libpng \
+    alsa-utils \
+    pulseaudio \
+"
+
+PYTHON_SUITE = " \
+    python3 \
+    python3-modules \
+    python3-pip \
+    python3-setuptools \
+    python3-unixadmin \
+    python3-requests \
+    python3-gunicorn \
+    python3-flask \
+    python3-djangorestframework \
+    python3-numpy \
+    python3-pandas \
+"
+
+AI_DEVELOPMENT = " \
+    tensorflow-lite \
+    llama-cpp \
+    python3-opencv \
+    python3-pybind11 \
+    make \
+    cmake \
+    libstdc++ \
+    libstdc++-dev \
+    git \
+"
+
+ADMIN_TOOLS = " \
+    vim \
+    htop \
+    opkg \
+    man-db \
+    man-pages \
+    groff \
+"
+
+IMAGE_INSTALL:append = " \
+    ${CORE_SYSTEM} \
+    ${FILE_UTILITIES} \
+    ${NETWORKING_TOOLS} \
+    ${HARDWARE_SUPPORT} \
+    ${PYTHON_SUITE} \
+    ${AI_DEVELOPMENT} \
+    ${ADMIN_TOOLS} \
+"
