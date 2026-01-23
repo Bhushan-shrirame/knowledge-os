@@ -164,3 +164,10 @@ IMAGE_INSTALL:append = " \
     ${AI_DEVELOPMENT} \
     ${ADMIN_TOOLS} \
 "
+
+
+
+# Remove the FORCE line entirely
+# CONFIG_CMDLINE="console=tty1 console=ttyAMA0 loglevel=7 earlycon"
+
+# Keep the root device, but hide the logs
