@@ -24,7 +24,7 @@ RDEPENDS:packagegroup-custom-net = " \
 
 RDEPENDS:packagegroup-custom-python = " \
     python3 python3-modules python3-pip python3-opencv \
-    python3-requests python3-flask python3-numpy \
+    python3-requests python3-flask python3-numpy python3-dev \
 "
 
 RDEPENDS:packagegroup-custom-ai = " \
@@ -34,4 +34,5 @@ RDEPENDS:packagegroup-custom-ai = " \
 RDEPENDS:packagegroup-drone = " \
     gpsd make gps-utils pps-tools nvme-cli \
     xfsprogs smartmontools \
+    mavlink \
 "

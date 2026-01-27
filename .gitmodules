@@ -13,3 +13,7 @@
 	path = meta-tensorflow
 	url = git://git.yoctoproject.org/meta-tensorflow
 	branch = scarthgap
+[submodule "meta-ros"]
+	path = meta-ros
+	url = https://github.com/ros/meta-ros.git
+	branch = scarthgap
