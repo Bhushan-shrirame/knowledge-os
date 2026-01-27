@@ -9,6 +9,7 @@ PACKAGES = " \
     packagegroup-custom-net \
     packagegroup-custom-python \
     packagegroup-custom-ai \
+    packagegroup-drone \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -29,4 +30,8 @@ RDEPENDS:packagegroup-custom-python = " \
 RDEPENDS:packagegroup-custom-ai = " \
     tensorflow-lite llama-cpp  \
     cmake make libstdc++-dev \
+"
+RDEPENDS:packagegroup-drone = " \
+    gpsd make gps-utils pps-tools nvme-cli \
+    xfsprogs smartmontools \
 "
