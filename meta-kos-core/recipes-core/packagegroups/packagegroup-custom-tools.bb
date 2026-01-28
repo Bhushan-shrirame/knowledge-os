@@ -25,14 +25,16 @@ RDEPENDS:packagegroup-custom-net = " \
 RDEPENDS:packagegroup-custom-python = " \
     python3 python3-modules python3-pip python3-opencv \
     python3-requests python3-flask python3-numpy python3-dev \
+    python3-future python3-lxml \
 "
 
 RDEPENDS:packagegroup-custom-ai = " \
     tensorflow-lite llama-cpp  \
-    cmake make libstdc++-dev \
+    cmake make libstdc++-dev v4l-utils \
 "
 RDEPENDS:packagegroup-drone = " \
-    gpsd make gps-utils pps-tools nvme-cli \
-    xfsprogs smartmontools \
+    gpsd gps-utils pps-tools nvme-cli \
+    xfsprogs smartmontools ffmpeg \
     mavlink \
+    i2c-tools can-utils \
 "
