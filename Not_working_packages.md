@@ -1,5 +1,4 @@
 # Not working packages
-
 python3-onnx \
 python3-pytorch \
 tensorflow \
@@ -8,4 +7,5 @@ python3-subprocess \
 python3-scipy \
 python3-pillow \
 tflite-runtime \
-
+mavlink-router \
+python3-pymavlink \
