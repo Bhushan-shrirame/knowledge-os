@@ -1,6 +1,6 @@
 SUMMARY = "Llama.cpp for KnowledgeOS"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=1539dadbedb60aa18519febfeab70632"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=223b26b3c1143120c87e2b13111d3e99"
 
 SRC_URI = "git://github.com/ggerganov/llama.cpp;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"

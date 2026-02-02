@@ -8,4 +8,3 @@ python3-scipy \
 python3-pillow \
 tflite-runtime \
 mavlink-router \
-python3-pymavlink \

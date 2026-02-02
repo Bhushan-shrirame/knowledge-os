@@ -182,3 +182,8 @@ curl -L https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/master/voc/Mo
 curl -L https://github.com/PINTO0309/MobileNet-SSD-RealSense/raw/master/caffemodel/MobileNetSSD/MobileNetSSD_deploy.caffemodel -o MobileNetSSD_deploy.caffemodel
 curl -L https://github.com/intel-iot-devkit/sample-videos/raw/master/person-bicycle-car-detection.mp4 -o input.mp4
 python3 detect.py
+
+RDEPENDS:packagegroup-custom-ai = " \
+    tensorflow-lite llama-cpp  \
+    cmake make libstdc++-dev v4l-utils \
+"

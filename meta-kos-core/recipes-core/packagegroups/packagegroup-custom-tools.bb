@@ -10,6 +10,7 @@ PACKAGES = " \
     packagegroup-custom-python \
     packagegroup-custom-ai \
     packagegroup-drone \
+    packagegroup-gpu-npu-acceleration \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -33,8 +34,16 @@ RDEPENDS:packagegroup-custom-ai = " \
     cmake make libstdc++-dev v4l-utils \
 "
 RDEPENDS:packagegroup-drone = " \
-    gpsd gps-utils pps-tools nvme-cli \
+    gpsd gps-utils pps-tools nvme-cli e2fsprogs \
     xfsprogs smartmontools ffmpeg \
-    mavlink \
+    mavlink watchdog \
     i2c-tools can-utils \
+    gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
+    chrony libv4l \
+"
+RDEPENDS:packagegroup-gpu-npu-acceleration = " \
+    clinfo \
+    opencl-icd-loader \
+    lmsensors-sensors \
+    watchdog \
 "
