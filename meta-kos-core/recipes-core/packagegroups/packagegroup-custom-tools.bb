@@ -39,7 +39,7 @@ RDEPENDS:packagegroup-drone = " \
     mavlink watchdog \
     i2c-tools can-utils \
     gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
-    chrony libv4l \
+    chrony libv4l mosh collectd \
 "
 RDEPENDS:packagegroup-gpu-npu-acceleration = " \
     clinfo \
