@@ -17,3 +17,7 @@
 	path = meta-ros
 	url = https://github.com/ros/meta-ros.git
 	branch = scarthgap
+[submodule "layers/meta-onnxruntime"]
+	path = meta-onnxruntime
+	url = https://github.com/NobuoTsukamoto/meta-onnxruntime.git
+	branch = scarthgap

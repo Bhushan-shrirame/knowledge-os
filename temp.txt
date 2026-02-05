@@ -187,3 +187,51 @@ RDEPENDS:packagegroup-custom-ai = " \
     tensorflow-lite llama-cpp  \
     cmake make libstdc++-dev v4l-utils \
 "
+
+
+# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+POKY_BBLAYERS_CONF_VERSION = "2"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /mnt/knowledge/Knowledge-OS/poky/meta \
+  /mnt/knowledge/Knowledge-OS/poky/meta-poky \
+  /mnt/knowledge/Knowledge-OS/poky/meta-yocto-bsp \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-oe \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-python \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-multimedia \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-networking \
+  /mnt/knowledge/Knowledge-OS/meta-arm/meta-arm-toolchain \
+  /mnt/knowledge/Knowledge-OS/meta-arm/meta-arm \
+  /mnt/knowledge/Knowledge-OS/meta-tensorflow \
+  /mnt/knowledge/Knowledge-OS/meta-kos-core \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-filesystems \
+  /mnt/knowledge/Knowledge-OS/meta-ros/meta-ros2-humble \
+  "
+
+
+  # POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+POKY_BBLAYERS_CONF_VERSION = "2"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /mnt/knowledge/Knowledge-OS/poky/meta \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-oe \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-python \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-multimedia \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-networking \
+  /mnt/knowledge/Knowledge-OS/meta-openembedded/meta-filesystems \
+  /mnt/knowledge/Knowledge-OS/meta-arm/meta-arm-toolchain \
+  /mnt/knowledge/Knowledge-OS/meta-arm/meta-arm \
+  /mnt/knowledge/Knowledge-OS/meta-tensorflow \
+  /mnt/knowledge/Knowledge-OS/meta-kos-core \
+  /mnt/knowledge/Knowledge-OS/meta-ros/meta-ros-common \
+  /mnt/knowledge/Knowledge-OS/meta-ros/meta-ros2 \
+  /mnt/knowledge/Knowledge-OS/meta-ros/meta-ros2-humble \
+"

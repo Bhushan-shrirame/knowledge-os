@@ -26,7 +26,7 @@ RDEPENDS:packagegroup-custom-net = " \
 RDEPENDS:packagegroup-custom-python = " \
     python3 python3-modules python3-pip python3-opencv \
     python3-requests python3-flask python3-numpy python3-dev \
-    python3-future python3-lxml \
+    python3-future python3-lxml python3-pillow \
 "
 
 RDEPENDS:packagegroup-custom-ai = " \
@@ -45,5 +45,4 @@ RDEPENDS:packagegroup-gpu-npu-acceleration = " \
     clinfo \
     opencl-icd-loader \
     lmsensors-sensors \
-    watchdog \
 "
