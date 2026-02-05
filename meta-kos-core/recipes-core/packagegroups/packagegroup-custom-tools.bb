@@ -45,4 +45,5 @@ RDEPENDS:packagegroup-gpu-npu-acceleration = " \
     clinfo \
     opencl-icd-loader \
     lmsensors-sensors \
+    onnxruntime python3-onnxruntime \
 "

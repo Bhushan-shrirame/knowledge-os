@@ -1,0 +1,9 @@
+--- a/onnxruntime/core/mlas/lib/CMakeLists.txt
++++ b/onnxruntime/core/mlas/lib/CMakeLists.txt
+@@ -530,13 +530,6 @@
+-  if (NOT onnxruntime_BUILD_FOR_NATIVE_MACHINE)
+-    if (CMAKE_CXX_COMPILER_ID MATCHES "Clang" OR CMAKE_CXX_COMPILER_ID MATCHES "GNU")
+-      set_source_files_properties(aarch64/HalfGemmKernelNeon.S PROPERTIES COMPILE_FLAGS "-march=armv8.2-a+fp16")
+-      set_source_files_properties(sqnbitgemm_kernel_neon.cpp PROPERTIES COMPILE_FLAGS "-march=armv8.2-a+dotprod")
+-    endif()
+-  endif()
