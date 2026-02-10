@@ -248,3 +248,49 @@ BBLAYERS ?= " \
 -      set_source_files_properties(sqnbitgemm_kernel_neon.cpp PROPERTIES COMPILE_FLAGS "-march=armv8.2-a+dotprod")
 -    endif()
 -  endif()
+
+curl -L 'https://huggingface.co/bartowski/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/Qwen2.5-0.5B-Instruct-Q4_K_M.gguf' -o /root/qwen.gguf
+
+llama-cli \
+  -m /root/qwen.gguf \
+  --threads 4 \
+  --ctx-size 256 \
+  --batch-size 128 \
+  --mlock \
+  --no-mmap \
+  --temp 0.2 \
+  --top-k 10 \
+  --repeat-penalty 1.1 \
+  -n 64 \
+  --prompt "Hi KnowledgeOS."
+
+
+
+  Run this command inside your backup folder:
+
+Bash
+
+qemu-system-aarch64 \
+  -machine virt \
+  -cpu cortex-a57 \
+  -smp 4 \
+  -m 4096 \
+  -kernel Image \
+  -drive id=disk0,file=core-image-minimal-qemuarm64.rootfs.ext4,if=none,format=raw \
+  -device virtio-blk-pci,drive=disk0 \
+  -netdev user,id=net0,hostfwd=tcp::8080-:8080 \
+  -device virtio-net-pci,netdev=net0 \
+  -nographic \
+  -append "root=/dev/vda rw console=ttyAMA0"
+
+
+  PACKAGES = " \
+    packagegroup-custom-core \
+    packagegroup-custom-net \
+    packagegroup-custom-python \
+    packagegroup-custom-ai \
+    packagegroup-drone \
+    packagegroup-gpu-npu-acceleration \
+    packagegroup-llm-package \
+"
+

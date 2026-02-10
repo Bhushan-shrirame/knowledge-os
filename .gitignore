@@ -34,3 +34,5 @@ build/**
 !build/conf/
 !build/conf/local.conf
 !build/conf/bblayers.conf
+
+backups/

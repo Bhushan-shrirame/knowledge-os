@@ -4,10 +4,25 @@ CONSOLE="/dev/tty1"
 # Clear screen
 clear > $CONSOLE
 
-# Print your fast welcome
-echo -e "\n\033[1;32mWelcome to Knowledge OS\033[0m\n" > $CONSOLE
+# # 2. Lower the kernel print level (silences mid-boot hardware logs)
+# dmesg -n 1
 
-# FORCE THE CURSOR BACK ON
-# \033[?25h is the escape code to show the cursor
-echo -ne "\033[?25h" > $CONSOLE
-setterm -cursor on > $CONSOLE
+# Print your ASCII logo (Insert your ASCII art here)
+cat << 'EOF' > /etc/issue
+ /$$   /$$                                   /$$                 /$$                      /$$$$$$   /$$$$$$ 
+| $$  /$$/                                  | $$                | $$                     /$$__  $$ /$$__  $$
+| $$ /$$/  /$$$$$$$   /$$$$$$  /$$  /$$  /$$| $$  /$$$$$$   /$$$$$$$  /$$$$$$   /$$$$$$ | $$  \ $$| $$  \__/
+| $$$$$/  | $$__  $$ /$$__  $$| $$ | $$ | $$| $$ /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$| $$  | $$|  $$$$$$ 
+| $$  $$  | $$  \ $$| $$  \ $$| $$ | $$ | $$| $$| $$$$$$$$| $$  | $$| $$  \ $$| $$$$$$$$| $$  | $$ \____  $$
+| $$\  $$ | $$  | $$| $$  | $$| $$ | $$ | $$| $$| $$_____/| $$  | $$| $$  | $$| $$_____/| $$  | $$ /$$  \ $$
+| $$ \  $$| $$  | $$|  $$$$$$/|  $$$$$/$$$$/| $$|  $$$$$$$|  $$$$$$$|  $$$$$$$|  $$$$$$$|  $$$$$$/|  $$$$$$/
+|__/  \__/|__/  |__/ \______/  \_____/\___/ |__/ \_______/ \_______/ \____  $$ \_______/ \______/  \______/ 
+                                                                     /$$  \ $$                              
+                                                                    |  $$$$$$/                              
+                                                                     \______/                               KnowledgeOS 1.0 AI Node - \n \l
+
+EOF
+
+# 4. Redirect all FUTURE boot noise to nothingness
+exec >/dev/null 2>&1
+

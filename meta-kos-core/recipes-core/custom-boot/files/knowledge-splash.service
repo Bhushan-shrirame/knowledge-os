@@ -1,14 +1,13 @@
 [Unit]
-Description=Knowledge OS Splash
+Description=KnowledgeOS Banner Setup
 DefaultDependencies=no
 After=local-fs.target
-Before=getty@tty1.service
+Before=getty.target
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c 'clear > /dev/tty1; echo -e "\033[1;32mWelcome to Knowledge OS\033[0m" > /dev/tty1'
-StandardOutput=tty
-TTYPath=/dev/tty1
+ExecStart=/usr/bin/loading-anim.sh
+RemainAfterExit=yes
 
 [Install]
 WantedBy=sysinit.target

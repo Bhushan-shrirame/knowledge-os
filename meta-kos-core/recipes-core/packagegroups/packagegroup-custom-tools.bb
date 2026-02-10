@@ -5,12 +5,7 @@ inherit packagegroup
 
 # Define the logical groups (Packages)
 PACKAGES = " \
-    packagegroup-custom-core \
-    packagegroup-custom-net \
-    packagegroup-custom-python \
-    packagegroup-custom-ai \
-    packagegroup-drone \
-    packagegroup-gpu-npu-acceleration \
+    packagegroup-llm-package \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -46,4 +41,12 @@ RDEPENDS:packagegroup-gpu-npu-acceleration = " \
     opencl-icd-loader \
     lmsensors-sensors \
     onnxruntime python3-onnxruntime \
+"
+
+RDEPENDS:packagegroup-llm-package = " \
+    llama-cpp \
+    onnxruntime \
+    opencl-icd-loader \
+    git \
+    curl \
 "
