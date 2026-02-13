@@ -5,7 +5,7 @@ inherit packagegroup
 
 # Define the logical groups (Packages)
 PACKAGES = " \
-    packagegroup-llm-package \
+    packagegroup-interceptor-minimal \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -49,4 +49,13 @@ RDEPENDS:packagegroup-llm-package = " \
     opencl-icd-loader \
     git \
     curl \
+"
+RDEPENDS:packagegroup-interceptor-minimal = " \
+    python3 python3-modules python3-pip python3-opencv \
+    python3-requests python3-flask python3-numpy python3-dev \
+    python3-future python3-lxml python3-pillow \
+    opencl-icd-loader git v4l-utils libv4l ca-certificates \
+    onnxruntime python3-onnxruntime \
+    python3-io python3-netserver \
+    curl ca-certificates\
 "
