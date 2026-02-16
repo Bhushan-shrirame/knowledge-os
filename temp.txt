@@ -262,7 +262,7 @@ llama-cli \
   --top-k 10 \
   --repeat-penalty 1.1 \
   -n 64 \
-  --prompt "Hi KnowledgeOS."
+  --prompt "Hi MerlinOS."
 
 
 
