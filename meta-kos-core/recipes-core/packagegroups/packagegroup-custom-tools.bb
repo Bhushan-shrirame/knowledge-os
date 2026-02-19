@@ -5,7 +5,8 @@ inherit packagegroup
 
 # Define the logical groups (Packages)
 PACKAGES = " \
-    packagegroup-interceptor-minimal \
+    packagegroup-llm-rpi \
+    packagegroup-custom-net \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -50,6 +51,18 @@ RDEPENDS:packagegroup-llm-package = " \
     git \
     curl \
 "
+
+# Below are the temporary package list which are use for the testing purpose only  (Packages)
+
+RDEPENDS:packagegroup-llm-rpi = " \
+    iproute2 curl openssh networkmanager iptables \
+    iw wpa-supplicant ca-certificates \
+    llama-cpp opencl-icd-loader \
+    git htop zram cpufrequtils \
+    linux-firmware-rpidistro-bcm43430 \
+    kernel-modules \
+"
+
 RDEPENDS:packagegroup-interceptor-minimal = " \
     python3 python3-modules python3-pip python3-opencv \
     python3-requests python3-flask python3-numpy python3-dev \

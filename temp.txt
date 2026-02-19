@@ -294,3 +294,11 @@ qemu-system-aarch64 \
     packagegroup-llm-package \
 "
 
+
+
+
+rasberry pi commands 
+
+ cp -L /mnt/knowledge/Knowledge-OS/build/tmp-glibc/deploy/images/raspberrypi3-64/core-image-minimal-raspberrypi3-64.rootfs.wic.bz2 ~/all\ os/
+ sudo umount /dev/sdb*
+ sudo bmaptool copy --nobmap core-image-minimal-raspberrypi3-64.rootfs.wic.bz2 /dev/sdb

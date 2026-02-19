@@ -21,3 +21,7 @@
 	path = meta-onnxruntime
 	url = https://github.com/NobuoTsukamoto/meta-onnxruntime.git
 	branch = scarthgap
+[submodule "meta-raspberrypi"]
+	path = meta-raspberrypi
+	url = git://git.yoctoproject.org/meta-raspberrypi
+	branch = scarthgap
