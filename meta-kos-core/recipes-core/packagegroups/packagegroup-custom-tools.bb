@@ -6,12 +6,15 @@ inherit packagegroup
 # Define the logical groups (Packages)
 PACKAGES = " \
     packagegroup-llm-rpi \
+    packagegroup-custom-core \
     packagegroup-custom-net \
+    packagegroup-custom-python \
+    packagegroup-custom-ai \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
     bash coreutils util-linux procps shadow sudo \
-    tar gzip bzip2 xz lz4 zstd vim htop git \
+    tar gzip bzip2 xz lz4 zstd vim htop git tmux screen \
 "
 
 RDEPENDS:packagegroup-custom-net = " \
@@ -28,6 +31,7 @@ RDEPENDS:packagegroup-custom-python = " \
 RDEPENDS:packagegroup-custom-ai = " \
     tensorflow-lite llama-cpp  \
     cmake make libstdc++-dev v4l-utils \
+    locale-base-en-us glibc-utils \
 "
 RDEPENDS:packagegroup-drone = " \
     gpsd gps-utils pps-tools nvme-cli e2fsprogs \
@@ -60,7 +64,7 @@ RDEPENDS:packagegroup-llm-rpi = " \
     llama-cpp opencl-icd-loader \
     git htop zram cpufrequtils \
     linux-firmware-rpidistro-bcm43430 \
-    kernel-modules \
+    kernel-modules tmux \
 "
 
 RDEPENDS:packagegroup-interceptor-minimal = " \
@@ -68,7 +72,14 @@ RDEPENDS:packagegroup-interceptor-minimal = " \
     python3-requests python3-flask python3-numpy python3-dev \
     python3-future python3-lxml python3-pillow \
     opencl-icd-loader git v4l-utils libv4l ca-certificates \
-    onnxruntime python3-onnxruntime \
     python3-io python3-netserver \
     curl ca-certificates\
+"
+
+RDEPENDS:packagegroup-merlin-ai-production = " \
+    packagegroup-llm-rpi \
+    packagegroup-custom-core \
+    packagegroup-custom-net \
+    packagegroup-custom-python \
+    packagegroup-custom-ai \
 "
