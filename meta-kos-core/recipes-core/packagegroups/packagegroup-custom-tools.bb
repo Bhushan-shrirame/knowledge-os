@@ -5,11 +5,9 @@ inherit packagegroup
 
 # Define the logical groups (Packages)
 PACKAGES = " \
-    packagegroup-llm-rpi \
+    packagegroup-llm-package \
     packagegroup-custom-core \
     packagegroup-custom-net \
-    packagegroup-custom-python \
-    packagegroup-custom-ai \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -50,10 +48,7 @@ RDEPENDS:packagegroup-gpu-npu-acceleration = " \
 
 RDEPENDS:packagegroup-llm-package = " \
     llama-cpp \
-    onnxruntime \
     opencl-icd-loader \
-    git \
-    curl \
 "
 
 # Below are the temporary package list which are use for the testing purpose only  (Packages)
@@ -74,12 +69,4 @@ RDEPENDS:packagegroup-interceptor-minimal = " \
     opencl-icd-loader git v4l-utils libv4l ca-certificates \
     python3-io python3-netserver \
     curl ca-certificates\
-"
-
-RDEPENDS:packagegroup-merlin-ai-production = " \
-    packagegroup-llm-rpi \
-    packagegroup-custom-core \
-    packagegroup-custom-net \
-    packagegroup-custom-python \
-    packagegroup-custom-ai \
 "
