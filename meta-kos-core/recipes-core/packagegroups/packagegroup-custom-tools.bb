@@ -8,6 +8,8 @@ PACKAGES = " \
     packagegroup-llm-package \
     packagegroup-custom-core \
     packagegroup-custom-net \
+    packagegroup-custom-python \
+    packagegroup-custom-tools \
 "
 
 RDEPENDS:packagegroup-custom-core = " \
@@ -24,6 +26,15 @@ RDEPENDS:packagegroup-custom-python = " \
     python3 python3-modules python3-pip python3-opencv \
     python3-requests python3-flask python3-numpy python3-dev \
     python3-future python3-lxml python3-pillow \
+"
+RDEPENDS:packagegroup-custom-tools += " \
+    packagegroup-core-buildessential \
+    pkgconfig \
+    cmake \
+    python3-setuptools \
+    python3-wheel \
+    libstdc++ \
+    libstdc++-dev \
 "
 
 RDEPENDS:packagegroup-custom-ai = " \
