@@ -14,7 +14,7 @@ PACKAGES = " \
 
 RDEPENDS:packagegroup-custom-core = " \
     bash coreutils util-linux procps shadow sudo \
-    tar gzip bzip2 xz lz4 zstd vim htop git tmux screen \
+    tar gzip bzip2 xz lz4 zstd vim htop git tmux screen locale-base-en-us glibc-utils localedef \
 "
 
 RDEPENDS:packagegroup-custom-net = " \
