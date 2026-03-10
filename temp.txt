@@ -318,3 +318,7 @@ wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
 
 # 3. Get the IP address
 udhcpc -i wlan0
+
+
+llama-cpp
+pip3 install llama-cpp-python --break-system-packages
