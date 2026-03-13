@@ -1,0 +1,12 @@
+[Unit]
+Description=My Custom Login Background Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/myscript.sh
+Restart=on-failure
+StandardOutput=journal
+
+[Install]
+WantedBy=default.target

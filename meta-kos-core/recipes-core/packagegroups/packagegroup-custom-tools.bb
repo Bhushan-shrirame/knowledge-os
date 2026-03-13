@@ -57,6 +57,7 @@ RDEPENDS:packagegroup-custom-core = " \
     vim \
     xz \
     zstd \
+    startup-service \
 "
 
 # =========================================================================
