@@ -25,3 +25,11 @@
 	path = meta-raspberrypi
 	url = git://git.yoctoproject.org/meta-raspberrypi
 	branch = scarthgap
+[submodule "meta-mender"]
+	path = meta-mender
+	url = https://github.com/mendersoftware/meta-mender.git
+	branch = scarthgap
+[submodule "meta-mender-community"]
+	path = meta-mender-community
+	url = https://github.com/mendersoftware/meta-mender-community.git
+	branch = scarthgap
