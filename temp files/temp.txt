@@ -322,3 +322,13 @@ udhcpc -i wlan0
 
 llama-cpp
 pip3 install llama-cpp-python --break-system-packages
+
+
+to copy the becnhmarks filesystem
+scp -r -P 2222 root@localhost:/tmp/benchmarks /mnt/knowledge/Knowledge-OS/after
+
+scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -r -P 2222 root@localhost:/tmp/benchmarks /mnt/knowledge/Knowledge-OS/after
+
+
+for profile texting
+profile_merlin "test_run_1"

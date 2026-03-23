@@ -36,3 +36,4 @@ build/**
 !build/conf/bblayers.conf
 
 backups/
+benchmarks/

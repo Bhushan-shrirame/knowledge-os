@@ -109,6 +109,7 @@ RDEPENDS:packagegroup-custom-tools = " \
     pkgconfig \
     python3-setuptools \
     python3-wheel \
+    merlin-profiler \
 "
 
 
