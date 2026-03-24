@@ -58,6 +58,9 @@ RDEPENDS:packagegroup-custom-core = " \
     xz \
     zstd \
     startup-service \
+    thermal-throttle \
+    robotics-sysctl \
+    network-bonding \
 "
 
 # =========================================================================

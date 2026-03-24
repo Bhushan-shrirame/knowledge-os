@@ -29,23 +29,23 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${WORKDIR}/myscript.sh ${D}${bindir}/myscript.sh
 
-    # 2. Install the systemd user service file globally
-    # /usr/lib/systemd/user/ is where systemd looks for user unit files.
-    install -d ${D}${nonarch_libdir}/systemd/user
-    install -m 0644 ${WORKDIR}/mystartup.service ${D}${nonarch_libdir}/systemd/user/mystartup.service
+    # 2. Install the systemd system service file globally
+    # /usr/lib/systemd/system/ is where systemd looks for system unit files.
+    install -d ${D}${nonarch_libdir}/systemd/system
+    install -m 0644 ${WORKDIR}/mystartup.service ${D}${nonarch_libdir}/systemd/system/mystartup.service
 
-    # 3. Enable the service to start implicitly for all users on login
-    # By creating a symlink in default.target.wants, systemd will automatically
-    # start this service when the user's default.target (login) is reached.
-    install -d ${D}${sysconfdir}/systemd/user/default.target.wants
-    ln -sf ${nonarch_libdir}/systemd/user/mystartup.service ${D}${sysconfdir}/systemd/user/default.target.wants/mystartup.service
+    # 3. Enable the service to start implicitly on boot
+    # By creating a symlink in multi-user.target.wants, systemd will automatically
+    # start this service during the boot process.
+    install -d ${D}${sysconfdir}/systemd/system/multi-user.target.wants
+    ln -sf ${nonarch_libdir}/systemd/system/mystartup.service ${D}${sysconfdir}/systemd/system/multi-user.target.wants/mystartup.service
 }
 
 # Ensure bitbake knows to package these newly created directories and files
 # into the final output package.
 FILES:${PN} += " \
-    ${nonarch_libdir}/systemd/user/mystartup.service \
-    ${sysconfdir}/systemd/user/default.target.wants/mystartup.service \
+    ${nonarch_libdir}/systemd/system/mystartup.service \
+    ${sysconfdir}/systemd/system/multi-user.target.wants/mystartup.service \
 "
 
 # If your script requires bash instead of sh, uncomment the following line:

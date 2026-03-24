@@ -1,0 +1,10 @@
+[Match]
+Name=bond0
+
+[Network]
+DHCP=ipv4
+IPv6AcceptRA=no
+
+[DHCP]
+UseDNS=yes
+UseNTP=yes

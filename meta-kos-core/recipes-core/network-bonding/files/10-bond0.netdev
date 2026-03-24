@@ -1,0 +1,10 @@
+[NetDev]
+Name=bond0
+Kind=bond
+
+[Bond]
+# active-backup guarantees only one slave is active at a time.
+# That ensures zero packet duplication over multiple radios.
+Mode=active-backup
+PrimaryReselect=always
+MIIMonitorSec=1s

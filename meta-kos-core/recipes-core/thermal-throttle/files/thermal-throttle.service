@@ -1,0 +1,13 @@
+[Unit]
+Description=MerlinOS Thermal Throttling Daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/thermal-throttle.sh
+Restart=always
+RestartSec=5
+StandardOutput=journal
+
+[Install]
+WantedBy=multi-user.target

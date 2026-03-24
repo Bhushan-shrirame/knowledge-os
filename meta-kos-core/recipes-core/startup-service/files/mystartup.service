@@ -1,6 +1,7 @@
 [Unit]
 Description=My Custom Login Background Service
-After=network.target
+After=network-online.target
+Wants=network-online.target
 
 [Service]
 Type=simple
@@ -9,4 +10,4 @@ Restart=on-failure
 StandardOutput=journal
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
