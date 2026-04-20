@@ -4,6 +4,22 @@ KnowledgeOS is a custom Linux distribution built using the **Yocto Project (Scar
 
 ---
 
+## 📂 Repository Structure
+
+| Directory / Layer | Description |
+| :--- | :--- |
+| **`build/`** | The main Yocto build directory. Contains your compiled images and environment configurations (`conf/local.conf`, `conf/multiconfig/`). |
+| **`poky/`** | The core Yocto Project reference distribution framework. |
+| **`meta-kos-core/`** | The primary custom layer. Contains KnowledgeOS-specific recipes, configuration overrides, and package groups. |
+| **`meta-openembedded/`**| Collection of community open-source recipes extending poky (networking, python, multimedia, etc.). |
+| **`meta-raspberrypi/`** | Hardware BSP layer providing support for building on Raspberry Pi devices. |
+| **`meta-arm/`** | Base hardware definitions and support for various ARM architectures. |
+| **`meta-tensorflow/`** | Provides recipes for TensorFlow Lite and additional AI processing pipelines. |
+| **`meta-onnxruntime/`** | Provides recipes for configuring the ONNX Runtime engine. |
+| **`meta-ros/`** | Layer enabling integration with the Robot Operating System (ROS). |
+| **`meta-mender*/`** | Meta layers responsible for Mender's OTA update client and A/B rootfs partitions. |
+---
+
 ##  1. Host System Setup
 
 ### Requirements

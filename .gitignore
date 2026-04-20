@@ -34,6 +34,8 @@ build/**
 !build/conf/
 !build/conf/local.conf
 !build/conf/bblayers.conf
+!build/conf/multiconfig/
+!build/conf/multiconfig/*.conf
 
 backups/
 benchmarks/
