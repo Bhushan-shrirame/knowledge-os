@@ -310,6 +310,7 @@ wifi CONFIG_CMDLINE
 
 wpa_passphrase "Your_WiFi_Name" "Your_Password" > /etc/wpa_supplicant.conf
 
+
 # 1. Bring the interface up (even if it complains)
 ifconfig wlan0 up
 
@@ -351,7 +352,7 @@ qemu-system-aarch64 \
 
 
 # Then build all the multiconfig targets simultaneously:
-bitbake mc:qemux86:core-image-minimal mc:raspberrypi:core-image-minimal mc:qemuarm:core-image-minimal
+bitbake mc:qemux86:core-image-minimal mc:raspberrypi:core-image-minimal mc:qemuarm64:core-image-minimal
 
 
 You don't have to build all of them at once. If you only want to build for the Raspberry Pi , you can simply run:
