@@ -357,3 +357,11 @@ bitbake mc:qemux86:core-image-minimal mc:raspberrypi:core-image-minimal mc:qemua
 
 You don't have to build all of them at once. If you only want to build for the Raspberry Pi , you can simply run:
 bitbake mc:raspberrypi:core-image-minimal
+
+
+to run 
+runqemu tmp-qemuarm64/deploy/images/qemuarm64/core-image-minimal-qemuarm64.qemuboot.conf nographic
+
+runqemu mc:qemuarm64:core-image-minimal nographic
+
+pkill qemu

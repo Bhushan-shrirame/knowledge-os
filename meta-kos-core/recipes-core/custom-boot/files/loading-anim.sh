@@ -14,8 +14,8 @@
 
 # --- 1. Define Target Console ---
 # Set the primary console device where the boot output is expected to appear.
-# /dev/tty1 is the first virtual console (the screen you see when booting).
-CONSOLE="/dev/tty1"
+# /dev/console automatically points to the active system console (serial or graphical)
+CONSOLE="/dev/console"
 
 # --- 2. Clear Previous Output ---
 # Clear any existing text on the screen to provide a blank canvas for our logo.
@@ -23,7 +23,7 @@ CONSOLE="/dev/tty1"
 clear > $CONSOLE
 
 
-# --- 3. Write Boot Splash to /etc/issue ---
+# --- 3. Write Boot Splash to /etc/issue and display it ---
 # Use a "Here Document" (cat << EOF) to write our ASCII art and branding text directly
 # into /etc/issue. The login manager reads this file just before presenting the login prompt.
 cat << "EOF" > /etc/issue
@@ -36,6 +36,9 @@ M    M  EEEEEE  R   R   LLLLLL  II  N   N   OOO   SSSS
                                                       
 UElement Softwares / MerlinOS v1.0
 EOF
+
+# Display the logo immediately on the console
+cat /etc/issue > $CONSOLE
 
 
 # cat << "EOF" > /etc/issue
