@@ -365,3 +365,7 @@ runqemu tmp-qemuarm64/deploy/images/qemuarm64/core-image-minimal-qemuarm64.qemub
 runqemu mc:qemuarm64:core-image-minimal nographic
 
 pkill qemu
+
+
+
+pkill -9 -f qemu
