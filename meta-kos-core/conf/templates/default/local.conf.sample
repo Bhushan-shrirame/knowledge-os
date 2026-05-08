@@ -1,0 +1,33 @@
+# Local configuration file for MerlinOS Build
+
+# Machine Selection
+MACHINE ??= "qemux86-64"
+DISTRO ?= "MerlinOS"
+
+BBMULTICONFIG = "qemuarm64 qemux86-64 raspberrypi"
+
+# Disk Space Monitoring during the build
+BB_DISKMON_DIRS ??= "\
+    STOPTASKS,${TMPDIR},1G,100K \
+    STOPTASKS,${DL_DIR},1G,100K \
+    STOPTASKS,${SSTATE_DIR},1G,100K \
+    STOPTASKS,/tmp,100M,100K \
+    HALT,${TMPDIR},100M,1K \
+    HALT,${DL_DIR},100M,1K \
+    HALT,${SSTATE_DIR},100M,1K \
+    HALT,/tmp,10M,1K"
+
+# Packaging
+USER_CLASSES ?= "buildstats"
+
+# Interactive shell
+PATCHRESOLVE = "noop"
+
+# Qemu configuration
+PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
+
+CONF_VERSION = "2"
+
+# Limit build to 6 CPU cores
+BB_NUMBER_THREADS ?= "6"
+PARALLEL_MAKE ?= "-j 6"

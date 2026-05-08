@@ -53,8 +53,9 @@ cd knowledge_os
 ```
 
 ### Initialize Build Environment
-This command sets up the environment and creates the build directory:
+This command uses our custom template to automatically pre-configure your build environment (setting up the `MerlinOS` distribution, layer paths, and multiconfigs):
 ```bash
+export TEMPLATECONF="$(pwd)/meta-kos-core/conf/templates/default"
 source poky/oe-init-build-env build
 ```
 
@@ -88,32 +89,23 @@ bitbake-layers show-layers
 Note - Edit build/conf/local.conf to adjust build options such as image type, machine target.
 
 ### Installing Packages in Your Image
-You can install additional packages by editing local.conf or creating a custom image recipe.
-1. Using local.conf:<br>
-    Add packages to the IMAGE_INSTALL_append variable:
-    ```bash 
-    # Example: Add Python3 and AI libraries
-    IMAGE_INSTALL_append = " python3-opencv python3-numpy python3-pandas python3-matplotlib"
-    ```
-2. Using a custom image recipe:
-    Create a .bb file (e.g., my-image.bb) in a layer and include:
-    ```bash
-    SUMMARY = "Custom KnowledgeOS image with AI stack"
-    LICENSE = "MIT"
+To maintain a reproducible and clean build environment, it is best practice to avoid adding packages directly to `local.conf`. Instead, use the custom layer structure provided in KnowledgeOS.
 
-    IMAGE_INSTALL = " \
-        packagegroup-core-boot \
-        packagegroup-core-ssh-openssh \
+1. **Using Multiconfigs (Target-Specific):**<br>
+    You can append packages to a specific target machine by editing its multiconfig file located in `meta-kos-core/conf/multiconfig/` (e.g., `raspberrypi.conf` or `qemuarm64.conf`). Be sure to use the modern Yocto override syntax (`:append`):
+    ```bash 
+    # Example: Add Python3 and AI libraries to the target
+    IMAGE_INSTALL:append = " python3-opencv python3-numpy python3-pandas"
+    ```
+
+2. **Using Custom Package Groups (Recommended):**<br>
+    KnowledgeOS uses modular package groups to keep the main image recipes clean. You can add your desired packages by editing the existing package group recipes in `meta-kos-core/recipes-core/` (such as `packagegroup-custom-core.bb` or `packagegroup-llm-package.bb`):
+    ```bash
+    RDEPENDS:${PN} += " \
         python3 \
         python3-opencv \
         python3-numpy \
-        python3-pandas \
-        python3-matplotlib \
     "
-    ```
-    Then build your image:
-    ```bash 
-    bitbake my-image
     ```
 
 ### Creating a New Layer
@@ -162,7 +154,7 @@ Best Practices
 
    * Version Control: Initialize a Git repository inside your new layer immediately to track your changes.
 
-## 4.Building & Testing
+## 4. Building & Testing
 ### Build the Image
 Yocto provides multiple pre-configured images:
 | Image | Description |
@@ -176,32 +168,35 @@ Yocto provides multiple pre-configured images:
 To build the base system with the AI stack included:
 
 ```bash 
-bitbake <image-name>
-# Example
-bitbake core-image-minimal
+bitbake mc:raspberrypi:core-image-minimal mc:qemuarm64:core-image-minimal mc:qemux86-64:core-image-minimal
+```
+
+To build for a single specific target (e.g., the physical drone hardware):
+```bash
+bitbake mc:raspberrypi:core-image-minimal
 ```
 
 ### Run in QEMU (Emulator)
+Once the build completes, you can test your partitioned `.wic` disk image using the built-in emulator. 
 
-Once the build completes, launch the OS using the built-in emulator:
+Because the ARM64 emulator requires explicit paths to boot custom `.wic` partitions, use the following command to boot the `qemuarm64` image with no graphics:
 
 ```bash 
-runqemu qemuarm64
-```
-OR 
-for no graphic version
-```bash 
-runqemu nographic
+runqemu qemuarm64 nographic tmp-qemuarm64-glibc/deploy/images/qemuarm64/core-image-minimal-qemuarm64.rootfs.wic
 ```
 
-Login: root (no password required)
+**Testing the System:**
+1. Login as `root` (no password required).
+2. Verify the OS architecture:
+   ```bash
+   uname -a
+   ```
+3. Verify your custom partition layout (Boot, Root, Data):
+   ```bash
+   lsblk
+   ```
 
-Verify Architecture: 
-```bash
-uname -a # should show aarch64 
-```
-
-Exit QEMU: Press Ctrl+A, then X or poweroff
+Exit QEMU: Press `Ctrl+A`, then `X`, or type `poweroff`.
 
 
 ## 📦 Installed Packages and System Features

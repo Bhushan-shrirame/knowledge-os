@@ -369,3 +369,11 @@ pkill qemu
 
 
 pkill -9 -f qemu
+
+
+How to Use It
+As you already successfully tested, setting the TEMPLATECONF variable before initializing the build environment will automatically generate the conf/ directory using your templates:
+
+bash
+export TEMPLATECONF="/absolute/path/to/meta-kos-core/conf/templates/default"
+source poky/oe-init-build-env new-build-directory

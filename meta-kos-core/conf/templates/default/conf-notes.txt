@@ -1,0 +1,17 @@
+
+===================================================================
+                  Welcome to MerlinOS Build Environment
+===================================================================
+
+Your custom build environment for MerlinOS has been initialized!
+
+To start building your multi-configuration targets:
+  bitbake mc:raspberrypi:core-image-minimal mc:qemuarm64:core-image-minimal mc:qemux86-64:core-image-minimal
+
+Or build for a single target:
+  bitbake mc:raspberrypi:core-image-minimal
+
+To test your images in QEMU:
+  runqemu qemuarm64 nographic tmp-qemuarm64-glibc/deploy/images/qemuarm64/core-image-minimal-qemuarm64.rootfs.wic
+
+===================================================================
