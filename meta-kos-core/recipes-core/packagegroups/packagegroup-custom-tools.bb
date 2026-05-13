@@ -37,12 +37,9 @@ PACKAGES = " \
 # Core command-line utilities for system administration, file management,
 # archiving, and text editing.
 RDEPENDS:packagegroup-custom-core = " \
-    bash \
     bzip2 \
-    coreutils \
     git \
     glibc-utils \
-    gzip \
     htop \
     locale-base-en-us \
     localedef \
@@ -51,10 +48,8 @@ RDEPENDS:packagegroup-custom-core = " \
     screen \
     shadow \
     sudo \
-    tar \
     tmux \
     util-linux \
-    vim \
     xz \
     zstd \
     startup-service \
@@ -62,6 +57,27 @@ RDEPENDS:packagegroup-custom-core = " \
     robotics-sysctl \
     network-bonding \
 "
+#RDEPENDS:packagegroup-custom-core = " \
+#    bzip2 \
+#    git \
+#    glibc-utils \
+#    htop \
+#    locale-base-en-us \
+#    localedef \
+#    lz4 \
+#    procps \
+#    screen \
+#    shadow \
+#    sudo \
+#    tmux \
+#    util-linux \
+#    xz \
+#    zstd \
+#    startup-service \
+#    thermal-throttle \
+#    robotics-sysctl \
+#    network-bonding \
+#"
 
 # =========================================================================
 # 2. Networking & Connectivity
